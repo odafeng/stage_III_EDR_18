@@ -1,0 +1,65 @@
+# 專案配置檔案
+
+# 資料路徑
+data:
+  raw_path: "data/raw/raw_data.csv"
+  processed_path: "data/processed/processed_data.csv"
+  train_path: "data/processed/train_data.csv"
+  test_path: "data/processed/test_data.csv"
+
+# 資料分割
+split:
+  test_size: 0.2
+  validation_size: 0.1
+  random_state: 42
+
+# 特徵選擇
+features:
+  clinical:
+    - age
+    - gender
+    - tumor_location
+    - tumor_size
+    - lymph_nodes_examined
+    - lymph_nodes_positive
+    - differentiation
+    - CEA_level
+  
+  treatment:
+    - chemotherapy
+    - radiation
+    - surgery_type
+  
+  outcome:
+    - survival_time
+    - event  # 0: censored, 1: death
+
+# 模型參數
+models:
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+  
+  xgboost:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 5
+    random_state: 42
+  
+  cox_ph:
+    penalizer: 0.1
+
+# 評估指標
+evaluation:
+  metrics:
+    - c_index
+    - brier_score
+    - time_dependent_auc
+  time_points: [12, 24, 36, 60]  # 月份
+
+# 輸出路徑
+output:
+  models_dir: "models/"
+  figures_dir: "results/figures/"
+  tables_dir: "results/tables/"
