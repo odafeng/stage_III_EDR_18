@@ -1,0 +1,99 @@
+{
+  "model_name": "Stage III Colon Cancer EDR Prediction Model",
+  "model_version": "1.0",
+  "freeze_date": "2025-11-07 22:21:44",
+  "target_variable": "edr_18m",
+  "n_training_samples": 253,
+  "n_events": 49,
+  "n_features": 13,
+  "n_interactions": 2,
+  "total_parameters": 15,
+  "epv": 3.0625,
+  "continuous_features": [
+    "Age",
+    "LNR",
+    "Tumor_Size_cm",
+    "Log_CEA_PreOp"
+  ],
+  "ordinal_features": [
+    "pT_ordinal",
+    "pN_ordinal",
+    "Differentiation_ordinal"
+  ],
+  "binary_features": [
+    "Tumor_Location",
+    "LVI",
+    "PNI",
+    "Tumor_Deposits",
+    "Mucinous_Any",
+    "MSI_High"
+  ],
+  "all_features": [
+    "Age",
+    "LNR",
+    "Tumor_Size_cm",
+    "Log_CEA_PreOp",
+    "pT_ordinal",
+    "pN_ordinal",
+    "Differentiation_ordinal",
+    "Tumor_Location",
+    "LVI",
+    "PNI",
+    "Tumor_Deposits",
+    "Mucinous_Any",
+    "MSI_High"
+  ],
+  "interaction_terms": [
+    "LNR × pN_ordinal",
+    "LVI × PNI"
+  ],
+  "best_C": 0.012742749857031334,
+  "penalty": "l2",
+  "solver": "lbfgs",
+  "class_weight": "balanced",
+  "cv_roc_auc": 0.6937872628726287,
+  "cv_folds": 5,
+  "internal_test": {
+    "n_samples": 78,
+    "n_events": 13,
+    "roc_auc": 0.6508875739644971,
+    "pr_auc": 0.3194722966382809,
+    "brier_uncalibrated": 0.22341813215492431,
+    "brier_calibrated": 0.13135523553235662,
+    "calibration_slope_uncalibrated": 1.1119351855711572,
+    "calibration_slope_calibrated": 0.9905903361247429,
+    "calibration_intercept_uncalibrated": -1.5706948432915218,
+    "calibration_intercept_calibrated": -0.17808410124297133
+  },
+  "thresholds": {
+    "default": 0.5,
+    "f1_optimal": 0.5058843241555563,
+    "sensitivity_70": 0.49197302516383173,
+    "youden_index": 0.498270056118829
+  },
+  "coefficients": {
+    "num__Age": 0.045228820019842055,
+    "num__LNR": 0.0882102322879196,
+    "num__Tumor_Size_cm": 0.14065469073652737,
+    "num__Log_CEA_PreOp": 0.11488172378207458,
+    "ord__pT_ordinal": 0.09461567001137339,
+    "ord__pN_ordinal": 0.04285466764621482,
+    "ord__Differentiation_ordinal": 0.005518292559672339,
+    "bin__Tumor_Location": 0.11194448390539118,
+    "bin__LVI": 0.07139086606658844,
+    "bin__PNI": 0.05250172499512341,
+    "bin__Tumor_Deposits": 0.012220072039831251,
+    "bin__Mucinous_Any": 0.028351549676730543,
+    "bin__MSI_High": -0.0021870817508478236,
+    "LNR × pN_ordinal": 0.18209782910927372,
+    "LVI × PNI": 0.06094369404560947
+  },
+  "usage_notes": {
+    "calibration": "Use pipeline_calibrated.pkl (Sigmoid calibration) for clinical predictions",
+    "calibration_method": "Sigmoid (Platt) - preserves calibration slope≈1.0",
+    "preprocessing": "Input data must have the exact features listed in all_features",
+    "missing_values": "Continuous: median imputation, Others: most frequent imputation",
+    "interactions": "Automatically created by the pipeline",
+    "recommended_threshold": "f1_optimal for balanced performance, sensitivity_70 for screening"
+  }
+}
