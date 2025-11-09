@@ -1,8 +1,5 @@
 """
-主分析：Stage III 結腸癌早期遠端復發預測模型
 Main Analysis: Early Distant Recurrence Prediction for Stage III Colon Cancer
-
-投稿級完整版 (Publication-Ready Version)
 ============================================
 
 模型配置：
