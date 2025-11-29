@@ -3,9 +3,10 @@ import pandas as pd
 import numpy as np
 import joblib
 import time
+import os
 
 # ==========================================
-# 1. 頁面設定 (新增 CSS 修復)
+# 1. Page Configuration (Added CSS Fix)
 # ==========================================
 st.set_page_config(
     page_title="OncoPredict: Stage III Colon Cancer",
@@ -14,7 +15,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# CSS 修正：增加響應式寬度和字體調整，防止 HTML 爆版
+# CSS Fix: Added responsive width and font adjustment to prevent HTML layout issues
 st.markdown("""
     <style>
     .stApp {
@@ -45,7 +46,7 @@ st.markdown("""
         font-weight: bold;
         border: 1px solid #ffcdd2;
         font-size: 0.9em;
-        white-space: nowrap; /* 防止換行 */
+        white-space: nowrap; /* Prevent line break */
     }
     .risk-badge-low {
         background-color: #e8f5e9;
@@ -55,7 +56,7 @@ st.markdown("""
         font-weight: bold;
         border: 1px solid #c8e6c9;
         font-size: 0.9em;
-        white-space: nowrap; /* 防止換行 */
+        white-space: nowrap; /* Prevent line break */
     }
     .prob-box {
         background-color: white;
@@ -83,13 +84,15 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # ==========================================
-# 2. 載入模型
+# 2. Load Model
 # ==========================================
 @st.cache_resource
 def load_model():
     try:
-        # 請確認這是您電腦上的正確路徑
-        model_path = 'final_model_calibrated.pkl' 
+        # Please confirm this is the correct path on your computer
+        # Use absolute path relative to this script for better deployment stability
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.join(current_dir, 'model', 'final_model_calibrated.pkl')
         return joblib.load(model_path)
     except FileNotFoundError:
         return None
@@ -97,7 +100,7 @@ def load_model():
 model = load_model()
 
 # ==========================================
-# 3. 語言設定
+# 3. Language Settings
 # ==========================================
 with st.sidebar:
     st.header("Settings")
@@ -166,7 +169,7 @@ st.markdown(f"**{t[lang]['subtitle']}**")
 st.divider()
 
 # ==========================================
-# 4. 輸入介面
+# 4. Input Interface
 # ==========================================
 with st.form("main_form"):
     
@@ -204,15 +207,15 @@ with st.form("main_form"):
     submit = st.form_submit_button(t[lang]["btn"], use_container_width=True, type="primary")
 
 # ==========================================
-# 5. 運算與報告輸出 (HTML 結構優化)
+# 5. Calculation and Report Output (HTML Structure Optimization)
 # ==========================================
 if submit:
     with st.spinner("Calculating..."):
         time.sleep(0.5)
 
-    # 1. 準備資料 (先不管順序，把欄位都備齊)
-    # 請注意：這裡的欄位名稱必須跟訓練時 pd.get_dummies 出來的名稱一字不差
-    # 根據我們最後的訓練代碼，名稱應該是由 'AJCC_Substage' + '_' + '3A' 組成
+    # 1. Prepare Data (Ignore order for now, just get all columns ready)
+    # Note: The column names here must exactly match the names from pd.get_dummies during training
+    # Based on our final training code, the name should be composed of 'AJCC_Substage' + '_' + '3A'
     input_data = pd.DataFrame({
         'PNI': [pni_val],
         'LNR': [lnr_val],
@@ -222,35 +225,35 @@ if submit:
         'AJCC_Substage_3C': [1 if ajcc_val == "3C" else 0]
     })
     
-    # 2. 【關鍵修正】自動對齊欄位順序
-    # 嘗試從模型中讀取它訓練時「記憶」的欄位順序
+    # 2. [Critical Fix] Auto-align column order
+    # Attempt to read the column order "remembered" by the model during training
     try:
         if hasattr(model, 'feature_names_in_'):
-            # 如果模型有紀錄，就照著它的順序重排
+            # If the model has a record, reorder according to it
             correct_order = model.feature_names_in_
             input_data = input_data[correct_order]
         else:
-            # 萬一模型沒紀錄 (較舊版本)，我們手動指定 (這是最後一次訓練可能的順序)
-            # 根據 pd.get_dummies 的預設行為，它通常會把 dummy 放在後面或替換原位
-            # 這裡備用一個最可能的順序
+            # In case the model has no record (older version), we manually specify (this is the likely order from the last training)
+            # According to the default behavior of pd.get_dummies, it usually puts dummies at the end or replaces in place
+            # Here is a backup of the most likely order
             fallback_order = ['PNI', 'LNR', 'Differentiation', 'AJCC_Substage_3A', 'AJCC_Substage_3B', 'AJCC_Substage_3C']
-            # 檢查是否欄位都對得上，對不上的話就嘗試硬跑
+            # Check if columns match, if not, try to run anyway
             if set(fallback_order).issubset(input_data.columns):
                 input_data = input_data[fallback_order]
     except Exception as e:
         st.warning(f"Auto-alignment failed, using default order. ({e})")
 
     try:
-        # 3. 預測
+        # 3. Prediction
         prob = model.predict_proba(input_data)[:, 1][0]
         
-        # Cutoff (您的黃金切點)
-        CUTOFF = 0.191 
+        # Cutoff (Your golden cutoff)
+        CUTOFF = 0.120 
         
         st.divider()
         st.subheader(f"📋 {t[lang]['res_title']}")
         
-        # 顯示結果標題
+        # Display result title
         if prob >= CUTOFF:
             st.error(f"#### {t[lang]['high_risk']}")
             rec_box = st.warning
@@ -260,7 +263,7 @@ if submit:
             rec_box = st.info
             rec_text = t[lang]["rec_low"]
             
-        # 顯示大數字與進度條
+        # Display large numbers and progress bar
         c1, c2 = st.columns([1, 2])
         with c1:
             st.metric(label=t[lang]["prob"], value=f"{prob:.1%}", delta=f"Threshold: {CUTOFF:.1%}", delta_color="off")
@@ -269,14 +272,25 @@ if submit:
             st.progress(float(prob))
             st.caption(f"Patient Profile: {sex} | {age} y/o")
         
-        # 顯示建議
+        # Display recommendations
         rec_box(f"**💡 Recommendation:**\n\n{rec_text}")
 
     except Exception as e:
         st.error(f"Prediction Error: {e}")
-        # 如果還是報錯，顯示除錯資訊幫助您
+        # If it still errors, show debug info to help you
         st.write("--- Debug Info ---")
         st.write("Input Shape:", input_data.shape)
         st.write("Input Columns:", input_data.columns.tolist())
         if hasattr(model, 'feature_names_in_'):
              st.write("Expected Columns:", model.feature_names_in_.tolist())
+
+# ==========================================
+# 6. Footer / Citation
+# ==========================================
+st.divider()
+st.markdown("""
+    <div style="text-align: center; color: #888; font-size: 0.85em;">
+        <i>'Ruling Out Early Distant Recurrence in Stage III Colon Cancer: A Parsimonious Machine Learning Model with External Validation'</i><br>
+        <b>Shih-Feng Fredric Huang, et al.</b>
+    </div>
+    """, unsafe_allow_html=True)

@@ -41,8 +41,9 @@ models/*.h5
 models/*.pt
 
 # Results
-results/figures/*
-results/tables/*
+results/
+Submission/
+local_data/
 
 # IDE
 .vscode/
