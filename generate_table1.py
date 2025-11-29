@@ -286,8 +286,7 @@ def create_table_one(csv_path, output_path):
             row_cells = table.add_row().cells
             row_cells[0].text = "  Missing"
             
-            # Total Missing % (usually based on total N including missing, or just count)
-            # User asked: "缺值拉出來成一行並計算缺值比例"
+            # Total Missing % (usually based on total N including missing, or just count
             # Usually missing % is N_missing / N_total_dataset
             pct_missing_tot = (n_missing_total / len(df)) * 100
             row_cells[1].text = f"{n_missing_total} ({pct_missing_tot:.1f}%)"
