@@ -21,6 +21,19 @@ st.markdown("""
     .stApp {
         background-color: #ffffff;
     }
+    /* Adjust container width and padding */
+    .block-container {
+        max-width: 1000px !important;
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    /* Ensure title stays on one line if possible */
+    h1 {
+        white-space: nowrap !important;
+        min-width: fit-content !important;
+    }
     .report-card {
         background-color: #f8f9fa;
         border: 1px solid #e9ecef;
@@ -131,7 +144,9 @@ t = {
         "rec_high": "Recommendation: Consider intensified adjuvant therapy (e.g., 6 months FOLFOX).",
         "rec_low": "Recommendation: Standard adjuvant therapy (e.g., 3 months CAPOX) likely sufficient.",
         "prob": "18-Month EDR Probability",
-        "thresh": "Threshold"
+        "thresh": "Threshold",
+        "disclaimer_title": "Disclaimer",
+        "disclaimer_text": "This tool is intended for research and educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Decisions regarding patient care should always be made by a qualified healthcare provider."
     },
     "zh": {
         "title": "🏥 第 3 期大腸癌風險評估系統",
@@ -156,7 +171,9 @@ t = {
         "rec_high": "臨床建議：此病患具有較高生物學惡性度。建議考慮加強輔助化療強度 (如 6 個月 FOLFOX)。",
         "rec_low": "臨床建議：此病患預後相對良好。建議依循標準治療指引 (如 3 個月 CAPOX) 即可。",
         "prob": "預測 18 個月內復發機率",
-        "thresh": "切點"
+        "thresh": "切點",
+        "disclaimer_title": "免責聲明",
+        "disclaimer_text": "本工具僅供研究與教育用途，不應視為醫療建議、診斷或治療的替代品。關於病患照護的決策，應由合格的醫療專業人員根據個別病患的具體情況制定。"
     }
 }
 
@@ -288,9 +305,14 @@ if submit:
 # 6. Footer / Citation
 # ==========================================
 st.divider()
+
+# Disclaimer
+with st.expander(f"⚠️ {t[lang]['disclaimer_title']}"):
+    st.write(t[lang]["disclaimer_text"])
+
 st.markdown("""
-    <div style="text-align: center; color: #888; font-size: 0.85em;">
-        <i>'Ruling Out Early Distant Recurrence in Stage III Colon Cancer: A Parsimonious Machine Learning Model with External Validation'</i><br>
+    <div style="text-align: center; color: #888; font-size: 1.2em;">
+        <i>'Ruling Out Early Distant Recurrence in Stage III Colon Cancer: A Simple Four-Variable Machine Learning Model with External Validation'</i><br>
         <b>Shih-Feng Fredric Huang, et al.</b>
     </div>
     """, unsafe_allow_html=True)
