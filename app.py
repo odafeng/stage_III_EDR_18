@@ -46,8 +46,10 @@ st.write("Files in MODEL_DIR:", os.listdir(MODEL_DIR))
 
 AJCC_OPTIONS = ["IIIA", "IIIB", "IIIC"]
 DIFF_OPTIONS = [
-    ("Well / Moderate", 1),
-    ("Poor / Undifferentiated", 2),
+    ("Well", 1),
+    ("Moderate", 2),
+    ("Poor", 3),
+    ("Undifferentiated", 4),
 ]
 
 # =========================
@@ -120,7 +122,7 @@ with col2:
     diff_label, diff_num = st.selectbox(
         "Tumor differentiation",
         DIFF_OPTIONS,
-        index=0,
+        index=1,  # default = Moderate
         format_func=lambda x: x[0],
     )
 
