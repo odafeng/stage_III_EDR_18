@@ -35,15 +35,14 @@ wheels/
 data/raw/*
 data/processed/*
 
-# Models
-models/*.pkl
-models/*.h5
-models/*.pt
-
 # Results
 results/
 Submission/
 local_data/
+IRB/
+generate_table1.py
+notebooks/Figure_1.ipynb
+notebooks/Figure_S1.ipynb
 
 # IDE
 .vscode/
@@ -63,3 +62,5 @@ conda_env/
 
 # Logs
 *.log
+.jupyter/
+tests/
