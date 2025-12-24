@@ -33,11 +33,16 @@ st.caption(
 DEFAULT_THRESHOLD = 0.12
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_DIR = os.path.join(BASE_DIR)
+
+MODEL_DIR = os.path.join(BASE_DIR, "model")  
 
 FEATURE_COL_PATH = os.path.join(MODEL_DIR, "final_feature_columns.pkl")
-IMPUTER_PATH = os.path.join(MODEL_DIR, "final_knn_imputer.pkl")
-MODEL_PATH = os.path.join(MODEL_DIR, "final_model_calibrated.pkl")
+IMPUTER_PATH     = os.path.join(MODEL_DIR, "final_knn_imputer.pkl")
+MODEL_PATH       = os.path.join(MODEL_DIR, "final_model_calibrated.pkl")
+
+st.write("MODEL_DIR:", MODEL_DIR)
+st.write("Files in MODEL_DIR:", os.listdir(MODEL_DIR))
+
 
 AJCC_OPTIONS = ["IIIA", "IIIB", "IIIC"]
 DIFF_OPTIONS = [
