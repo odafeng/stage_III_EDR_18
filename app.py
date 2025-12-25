@@ -215,3 +215,21 @@ if st.button("Calculate risk", type="primary", use_container_width=True):
     st.caption(
         "Predictions are probabilistic and should be interpreted in conjunction with clinical judgment."
     )
+
+st.divider()
+st.subheader("Disclaimer")
+st.write(
+    "This tool is intended for research and educational purposes only. "
+    "It is not a substitute for professional medical advice, diagnosis, or treatment. "
+    "Decisions regarding patient care should always be made by a qualified healthcare provider."
+)
+
+st.markdown(
+    """
+    <div style="text-align: center; margin-top: 20px; color: #666;">
+        <i>Ruling Out Early Distant Recurrence in Stage III Colon Cancer: A Simple Four-Variable Machine Learning Model with External Validation</i><br>
+        <b>Shih-Feng Huang, et al.</b>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
