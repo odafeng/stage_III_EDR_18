@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this repository and the corresponding manuscript once published."
+title: "Early Distant Recurrence Prediction in Stage III Colon Cancer: Model Development and External Validation"
+type: software
+authors:
+  - family-names: Huang
+    given-names: Shih-Feng
+    orcid: "https://orcid.org/0000-0002-8037-4074"
+repository-code: "https://github.com/odafeng/Stage_III_Colon_EDR"
+license: MIT

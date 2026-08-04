@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Stage III colon cancer EDR social preview</title>
+  <desc id="desc">Externally validated machine learning workflow for early distant recurrence prediction.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071A2B"/><stop offset="1" stop-color="#163248"/></linearGradient><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#5EEAD4" stroke-opacity="0.05"/></pattern></defs>
+  <rect width="1280" height="640" rx="28" fill="url(#bg)"/><rect width="1280" height="640" rx="28" fill="url(#grid)"/>
+  <rect x="54" y="62" width="8" height="516" rx="4" fill="#2DD4BF"/>
+  <text x="88" y="94" fill="#5EEAD4" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="3">CLINICAL PREDICTION · EXTERNAL VALIDATION</text>
+  <text x="86" y="176" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="750">Stage III Colon Cancer</text>
+  <text x="88" y="232" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Early Distant Recurrence</text>
+  <text x="88" y="286" fill="#C6D5DF" font-family="Arial, Helvetica, sans-serif" font-size="25">Parsimonious ML workflow · pooled OOF · survival analysis</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">
+    <rect x="88" y="458" width="180" height="48" rx="24" fill="#123E50" stroke="#2DD4BF"/><text x="178" y="489" text-anchor="middle" fill="#E6FFFB">4-variable model</text>
+    <rect x="284" y="458" width="194" height="48" rx="24" fill="#123E50" stroke="#2DD4BF"/><text x="381" y="489" text-anchor="middle" fill="#E6FFFB">External cohort</text>
+    <rect x="494" y="458" width="174" height="48" rx="24" fill="#123E50" stroke="#2DD4BF"/><text x="581" y="489" text-anchor="middle" fill="#E6FFFB">Privacy-first</text>
+  </g>
+  <text x="88" y="566" fill="#6E93A7" font-family="Arial, Helvetica, sans-serif" font-size="18">Manuscript in preparation · odafeng/Stage_III_Colon_EDR</text>
+  <g transform="translate(764 126)" font-family="Arial, Helvetica, sans-serif">
+    <rect width="418" height="380" rx="28" fill="#0C2739" stroke="#2DD4BF" stroke-opacity="0.7"/>
+    <line x1="62" y1="300" x2="370" y2="300" stroke="#52768A" stroke-width="2"/>
+    <line x1="62" y1="300" x2="62" y2="54" stroke="#52768A" stroke-width="2"/>
+    <path d="M62 300C90 212 140 142 206 100C258 67 322 55 370 52" fill="none" stroke="#5EEAD4" stroke-width="6"/>
+    <path d="M62 300L370 54" fill="none" stroke="#52768A" stroke-dasharray="9 9" stroke-width="2"/>
+    <circle cx="206" cy="100" r="8" fill="#F8FAFC"/>
+    <rect x="188" y="324" width="182" height="34" rx="17" fill="#123E50"/>
+    <text x="279" y="347" text-anchor="middle" fill="#E6FFFB" font-size="16" font-weight="700">Derivation → validation</text>
+    <g font-size="15" font-weight="700" fill="#C6D5DF">
+      <text x="86" y="86">AJCC</text><text x="86" y="116">PNI</text><text x="86" y="146">LNR</text><text x="86" y="176">Grade</text>
+    </g>
+  </g>
+</svg>

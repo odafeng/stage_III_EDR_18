@@ -1,7 +1,24 @@
 # Early Distant Recurrence Prediction in Stage III Colon Cancer
+
 ## Machine Learning Model Development and External Validation
 
+[![Status](https://img.shields.io/badge/Manuscript-in_preparation-64748B)](#citation)
+[![Validation](https://img.shields.io/badge/Validation-external-0F766E)](#which-notebooks-reproduce-the-manuscript)
+[![Data](https://img.shields.io/badge/Patient_data-not_included-7C3AED)](#notes-on-reproducibility-and-privacy)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+<p align="center">
+  <img src=".github/social-preview.png" alt="Stage III colon cancer early distant recurrence prediction workflow" width="100%" />
+</p>
+
 This repository contains the analysis workflow for developing and validating a machine learning model to predict **18-month early distant recurrence (EDR-18)** in stage III colon cancer.
+
+| Research dimension | Implementation |
+| --- | --- |
+| **Primary question** | Can a parsimonious clinicopathologic model stratify 18-month distant-recurrence risk? |
+| **Validation** | Nested cross-validation, pooled out-of-fold evaluation, and an independent external cohort |
+| **Interpretability** | Four-variable model, calibration, Kaplan–Meier analysis, and SHAP |
+| **Privacy** | Patient-level datasets are excluded; expected files and columns are documented below |
 
 The workflow covers:
 - Feature selection (LASSO and XGBoost)
@@ -218,3 +235,5 @@ pip install -r requirements.txt
 If you use or adapt this workflow in your own research, please cite the corresponding manuscript (once published) and this repository.
 
 > **Huang SF, et al.** Ruling Out Early Distant Recurrence in Stage III Colon Cancer: A Parsimonious Machine Learning Model with External Validation [Manuscript in preparation]
+
+Machine-readable repository citation metadata are available in [`CITATION.cff`](CITATION.cff). Update the preferred citation after journal publication.
