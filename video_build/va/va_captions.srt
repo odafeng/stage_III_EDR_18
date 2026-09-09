@@ -1,0 +1,39 @@
+1
+00:00:00,300 --> 00:00:07,800
+Ruling out early distant recurrence in stage III colon cancer — a simple 4-variable ML model with external validation
+
+2
+00:00:08,300 --> 00:00:19,800
+20–30% of stage III patients recur after curative surgery · early distant recurrence (≤18 mo) = aggressive biology
+
+3
+00:00:20,300 --> 00:00:29,800
+AJCC staging leaves wide variation within substages · molecular tools are costly, not universally available
+
+4
+00:00:30,300 --> 00:00:47,300
+4 routine pathology variables → XGBoost → rule-out probability · 331 derivation · 142 external
+
+5
+00:00:47,800 --> 00:01:00,800
+Derivation: AUC 0.680 · sensitivity 77.4% · NPV 89.8% — vs AJCC 0.625
+
+6
+00:01:01,300 --> 00:01:13,800
+External: AUC 0.633 · NPV 90.8% · sensitivity 68.4% · DFS separation (HR 1.83)
+
+7
+00:01:14,300 --> 00:01:23,300
+SHAP: AJCC IIIC · lymph node ratio · perineural invasion drive risk
+
+8
+00:01:23,800 --> 00:01:34,800
+Free web calculator — 4 pathology inputs → probability + risk class, right after surgery
+
+9
+00:01:35,300 --> 00:01:43,800
+Retrospective design · limited external events — multicenter prospective validation next
+
+10
+00:01:44,300 --> 00:01:56,300
+4 variables · ~90% NPV · a transparent, pathology-based rule-out tool

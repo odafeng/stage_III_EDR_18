@@ -1,0 +1,62 @@
+[
+  {
+    "key": "s1_title",
+    "dur": 8.0,
+    "cap": "Ruling out early distant recurrence in stage III colon cancer — a simple 4-variable ML model with external validation",
+    "text": "Ruling out early distant recurrence in stage three colon cancer: a simple four-variable machine learning model."
+  },
+  {
+    "key": "s2_problem",
+    "dur": 12.0,
+    "cap": "20–30% of stage III patients recur after curative surgery · early distant recurrence (≤18 mo) = aggressive biology",
+    "text": "Despite curative surgery, twenty to thirty percent of stage three patients recur. Early distant recurrence within eighteen months signals aggressive tumor biology."
+  },
+  {
+    "key": "s3_gap",
+    "dur": 10.0,
+    "cap": "AJCC staging leaves wide variation within substages · molecular tools are costly, not universally available",
+    "text": "AJCC staging leaves wide variation within the same substage, while molecular tools are costly and not universally available."
+  },
+  {
+    "key": "s4_model",
+    "dur": 17.5,
+    "cap": "4 routine pathology variables → XGBoost → rule-out probability · 331 derivation · 142 external",
+    "text": "Our model uses four routine variables: AJCC substage, lymph node ratio, perineural invasion, and tumor differentiation. Trained on three hundred thirty-one patients, validated in an independent cohort of one hundred forty-two."
+  },
+  {
+    "key": "s5_internal",
+    "dur": 13.5,
+    "cap": "Derivation: AUC 0.680 · sensitivity 77.4% · NPV 89.8% — vs AJCC 0.625",
+    "text": "Internally, the model reached an AUC of zero point six eight, with seventy-seven percent sensitivity and around ninety percent negative predictive value, higher than AJCC alone."
+  },
+  {
+    "key": "s6_external",
+    "dur": 13.0,
+    "cap": "External: AUC 0.633 · NPV 90.8% · sensitivity 68.4% · DFS separation (HR 1.83)",
+    "text": "External validation confirmed rule-out performance: AUC zero point six three, ninety point eight percent negative predictive value, and clear separation in disease-free survival between risk groups."
+  },
+  {
+    "key": "s7_shap",
+    "dur": 9.5,
+    "cap": "SHAP: AJCC IIIC · lymph node ratio · perineural invasion drive risk",
+    "text": "Explainability confirmed clinical face validity: stage three C, lymph node ratio, and perineural invasion drove risk."
+  },
+  {
+    "key": "s8_clinical",
+    "dur": 11.5,
+    "cap": "Free web calculator — 4 pathology inputs → probability + risk class, right after surgery",
+    "text": "All inputs come from a standard pathology report, so the model works right after surgery. We built a free web calculator returning a probability and a risk classification."
+  },
+  {
+    "key": "s9_limits",
+    "dur": 9.0,
+    "cap": "Retrospective design · limited external events — multicenter prospective validation next",
+    "text": "Limitations include the retrospective design and limited external events. Multicenter prospective validation is next."
+  },
+  {
+    "key": "s10_takehome",
+    "dur": 12.5,
+    "cap": "4 variables · ~90% NPV · a transparent, pathology-based rule-out tool",
+    "text": "Four routine variables. A consistent negative predictive value of around ninety percent. A transparent, pathology-based tool to rule out early distant recurrence."
+  }
+]
